@@ -12,6 +12,7 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "vue",
   },
   indent = {
     enable = true,
@@ -33,11 +34,33 @@ M.mason = {
     "typescript-language-server",
     "deno",
     "prettier",
+    "tailwindcss-language-server",
 
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    -- vue
+    "volar",
+    "tsserver",
   },
+  opts = {
+    handlers = {
+      function(server_name)
+        local server_config = {}
+        local lspconfig = require('lspconfig')
+
+        if require("neoconf").get(server_name .. ".disable") then
+          return
+        end
+        if server_name == "volar" then
+          server_config.filetypes = { 'vue', 'typescript', 'javascript' }
+        end
+
+        lspconfig[server_name].setup(server_config)
+      end,
+    }
+  }
 }
 
 -- git support in nvimtree
