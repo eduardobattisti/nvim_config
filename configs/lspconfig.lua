@@ -53,12 +53,17 @@ local function get_nvm_node_version()
   -- Remove trailing newline character
   node_version = node_version:gsub('\n', '')
 
-  local typescript_path = nvm_dir .. "/versions/node/" .. node_version .. "/lib/node_modules/typescript/lib"
+  local nvm_node_version_path = nvm_dir .. "/versions/node/" .. node_version
 
-  return typescript_path
+  return nvm_node_version_path
 end
 
-get_nvm_node_version()
+local function get_tsserver_node_global_path()
+  local nvm_node_version_path = get_nvm_node_version()
+  local tsserver_global_path = nvm_node_version_path .. "/lib/node_modules/typescript/lib"
+
+  return tsserver_global_path
+end
 
 lspconfig.volar.setup {
   cmd = volar_cmd,
@@ -67,7 +72,7 @@ lspconfig.volar.setup {
   filetypes = { 'vue'},
   init_options = {
     typescript = {
-      tsdk = get_nvm_node_version()
+      tsdk = get_tsserver_node_global_path()
     },
   }
 }
