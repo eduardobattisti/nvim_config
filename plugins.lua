@@ -60,6 +60,71 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+  {
+    "theprimeagen/harpoon",
+    lazy = false,
+    config = function()
+      local mark = require "harpoon.mark"
+      local ui = require "harpoon.ui"
+
+
+      vim.keymap.set("n", "<leader>ha", mark.add_file)
+      vim.keymap.set("n", "<leader>hr", mark.rm_file)
+      vim.keymap.set("n", "<leader>hc", mark.clear_all)
+      vim.keymap.set("n", "<leader>hm", ui.toggle_quick_menu)
+
+      vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
+      vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
+      vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
+      vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
+    end,
+  },
+  {
+    'barrett-ruth/import-cost.nvim',
+    build = 'sh install.sh yarn',
+    event = "BufEnter",
+    ft = {'js', 'ts', 'vue', 'tsx', 'jsx'},
+    config = true
+  },
+  {
+    "fedepujol/move.nvim",
+    event = "BufRead"
+  },
+  {
+      "danymat/neogen",
+      dependencies = "nvim-treesitter/nvim-treesitter",
+      event = "BufEnter",
+      config = true,
+      version = "*" 
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({})
+    end
+  },
+  {
+    "m4xshen/smartcolumn.nvim",
+    event = "FileType",
+    opts = {
+      colorcolumn = { "80", "120" },
+    }
+  },
+  {
+    "mbbill/undotree",
+    lazy = false,
+    config = function() vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = "LazyGit",
+    lazy = false,
+    config = function()
+      vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit)
+    end,
+  },
 }
 
 return plugins
