@@ -5,7 +5,7 @@ local os = require('os')
 local io = require('io')
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "volar" }
+local servers = { "html", "cssls", "tsserver", "clangd", "volar", "tailwindcss" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -14,6 +14,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Volar Config Start
 local function on_new_config(new_config, new_root_dir)
   local function get_typescript_server_path(root_dir)
     local project_root = lspconfig.util.find_node_modules_ancestor(root_dir)
@@ -70,3 +71,4 @@ lspconfig.volar.setup {
     },
   }
 }
+-- Volar Config End
