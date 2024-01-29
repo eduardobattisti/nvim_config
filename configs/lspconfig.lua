@@ -5,7 +5,7 @@ local os = require('os')
 local io = require('io')
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "volar", "tailwindcss" }
+local servers = { "html", "cssls", "tsserver", "clangd", "volar", "tailwindcss", "eslint" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

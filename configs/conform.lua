@@ -4,9 +4,9 @@ local options = {
 	formatters_by_ft = {
 		lua = { "stylua" },
 
-		javascript = { "prettier" },
+		javascript = { "eslint" },
 		css = { "prettier" },
-		html = { "prettier" },
+		html = { "eslint" },
 
 		sh = { "shfmt" },
 	},
