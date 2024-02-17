@@ -77,3 +77,12 @@ lspconfig.volar.setup {
   }
 }
 -- Volar Config End
+
+lspconfig.emmet_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    allow_incremental_sync = true,
+    debounce_text_changes = 150
+  }
+}
