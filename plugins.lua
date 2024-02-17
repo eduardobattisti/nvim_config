@@ -106,6 +106,14 @@ local plugins = {
     end
   },
   {
+    "windwp/nvim-ts-autotag",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+        require("nvim-ts-autotag").setup({})
+    end
+  },
+  {
     "m4xshen/smartcolumn.nvim",
     event = "FileType",
     opts = {
