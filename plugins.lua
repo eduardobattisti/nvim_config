@@ -154,6 +154,11 @@ local plugins = {
         or { "treesitter", "indent" } -- if file opened, try to use treesitter if available
     end,
   },
+  {
+    "wavded/vim-stylus",
+    event = "BufEnter",
+    ft = {'styl', 'vue', 'tsx', 'jsx'},
+  },
 }
 
 return plugins
