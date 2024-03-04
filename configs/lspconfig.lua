@@ -5,7 +5,7 @@ local os = require('os')
 local io = require('io')
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "volar", "tailwindcss", "eslint" }
+local servers = { "html", "cssls", "tsserver", "clangd", "volar", "tailwindcss", "eslint", "intelephense" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -85,4 +85,34 @@ lspconfig.emmet_ls.setup {
     allow_incremental_sync = true,
     debounce_text_changes = 150
   }
+}
+
+-- Intelephense
+lspconfig.intelephense.setup {
+    settings = {
+        intelephense = {
+            stubs = { 
+                "bcmath",
+                "bz2",
+                "calendar",
+                "Core",
+                "curl",
+                "zip",
+                "zlib",
+                "wordpress",
+                "woocommerce",
+                "acf-pro",
+                "wordpress-globals",
+                "wp-cli",
+                "genesis",
+                "polylang"
+            },
+            environment = {
+              includePaths = '/home/eduardobattisti/.composer/vendor/php-stubs/' -- this line forces the composer path for the stubs in case inteliphense don't find it...
+            },
+            files = {
+                maxSize = 5000000;
+            };
+        };
+    }
 }

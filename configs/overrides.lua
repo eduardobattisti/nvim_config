@@ -37,6 +37,7 @@ M.mason = {
     "eslint",
     "tailwindcss-language-server",
     "emmet-ls",
+    "intelephense",
 
     -- c/cpp stuff
     "clangd",
